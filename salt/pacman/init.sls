@@ -1,10 +1,10 @@
 ##########
-# KLIENTSERVER FOR DEICHMAN
+# PACMAN FOR DEICHMAN
 # BASED ON UBUNTU SAUCY SERVER 64bit
 ##########
 
 installpkgs:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       - language-pack-nb
       - python-software-properties

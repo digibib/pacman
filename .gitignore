@@ -1,2 +1,2 @@
 .vagrant
-pillar/klientserver/admin.sls
+pillar/pacman/admin.sls

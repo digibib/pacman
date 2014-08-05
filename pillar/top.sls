@@ -1,4 +1,4 @@
 # PILLAR TOP
 base:
   '*':
-    - klientserver
+    - pacman
