@@ -18,4 +18,5 @@ updatepkgs:
       - screen
       - openssh-server
       - salt-master
+      - bind9
     - skip_verify: True

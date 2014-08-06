@@ -20,15 +20,16 @@ installpkgs:
       - screen
       - openssh-server
       - salt-master
+      - bind9
     - skip_verify: True
 
 ##########
 # CONFIG FILES
 ##########
 
-/etc/network/interfaces:
-  file.managed:
-    - source: {{ pillar['saltfiles'] }}/network-interfaces
+# /etc/network/interfaces:
+#   file.managed:
+#     - source: {{ pillar['saltfiles'] }}/network-interfaces
 
 /etc/default/tftpd-hpa:
   file.managed:
@@ -38,12 +39,6 @@ installpkgs:
   file.uncomment:
     - regex: net\.ipv4\.ip_forward=1
 
-#iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-#echo 1 | tee /proc/sys/net/ipv4/ip_forward
-
-/etc/iptables.up.rules:
-  file.managed:
-    - source: {{ pillar['saltfiles'] }}/iptables.up.rules
 
 /etc/default/isc-dhcp-server:
   file.managed:
@@ -64,7 +59,41 @@ installpkgs:
     - mode: 750
 
 ##########
+# DNS
+##########
+
+/etc/bind/named.conf.options:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/named.conf.options
+    - mode: 750
+
+/etc/bind/named.conf.local:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/named.conf.local
+    - mode: 750
+
+##########
+# IPTABLES
+##########
+
+#iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+#echo 1 | tee /proc/sys/net/ipv4/ip_forward
+
+/etc/iptables.up.rules:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/iptables.up.rules
+    - template: jinja
+  cmd.wait:
+    - name: iptables-restore < /etc/iptables.up.rules
+    - watch:
+      - file: /etc/iptables.up.rules
+    - require:
+      - file: /etc/default/isc-dhcp-server
+      - file: /etc/dhcp/dhcpd.conf
+
+##########
 # TFTPBOOT FOLDER STRUCTURE
+# includes pxeboot files, pxe settings and boot images 
 ##########
 
 /tftpboot:
@@ -107,14 +136,6 @@ searchimage:
 ##########
 # SERVICES
 ##########
-
-networking:
-  service:
-    - running
-    - watch:
-      - file: /etc/network/interfaces
-    - require:
-      - file: /etc/iptables.up.rules
 
 isc-dhcp-server:
   service:
