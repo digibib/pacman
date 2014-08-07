@@ -3,10 +3,11 @@
 zone "deichman.local" IN {
  type master;
  file "/etc/bind/zones/deichman.local.db";
- allow-update { 192.168.0.1; }; // IP of DHCP server
+ allow-update { 192.168.0.1; }; 
 };
 
 zone "0.168.192.in-addr.arpa" {
  type master;
  file "/etc/bind/zones/rev.0.168.192.in-addr.arpa";
+ allow-update { 192.168.0.1; }; 
 };
