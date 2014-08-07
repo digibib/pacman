@@ -1,31 +1,32 @@
 #/etc/bind/named.conf.options
 
 options {
-directory "/var/cache/bind";
-// If there is a firewall between you and nameservers you want
-// to talk to, you may need to fix the firewall to allow multiple
-// ports to talk. See http://www.kb.cert.org/vuls/id/800113
-// If your ISP provided one or more IP addresses for stable
-// nameservers, you probably want to use them as forwarders.
-// Uncomment the following block, and insert the addresses replacing
+  directory "/var/cache/bind";
+  // If there is a firewall between you and nameservers you want
+  // to talk to, you may need to fix the firewall to allow multiple
+  // ports to talk. See http://www.kb.cert.org/vuls/id/800113
+  // If your ISP provided one or more IP addresses for stable
+  // nameservers, you probably want to use them as forwarders.
+  // Uncomment the following block, and insert the addresses replacing
 
-// the all-0's placeholder.
-forwarders {
- 10.172.2.1;
-};
+  // the all-0's placeholder.
+  forwarders {
+   {{ pillar['dns']['forward'] }};
+  };
 
-# query range you allow
-allow-query { localhost; 192.168.0.0/24; };
+  # query range you allow
+  allow-query { localhost; 192.168.0.0/16; };
 
-# the range to transfer zone files
-allow-transfer { localhost; 192.168.0.0/24; };
+  # the range to transfer zone files
+  #allow-transfer { localhost; 192.168.0.0/16; };
 
-# recursion range you allow
-allow-recursion { localhost; 192.168.0.0/24; };
-dnssec-validation auto;
-auth-nxdomain no; # conform to RFC1035
+  # recursion range you allow
+  #allow-recursion { localhost; 192.168.0.0/24; };
+  dnssec-validation auto;
+  auth-nxdomain no; # conform to RFC1035
 
-# change if not use IPV6
-listen-on-v6
-{ none; };
+  # change if not use IPV6
+  listen-on-v6
+  { none; };
+
 }; 

@@ -1,13 +1,28 @@
 #/etc/bind/named.conf.local
 
-zone "deichman.local" IN {
- type master;
- file "/etc/bind/zones/deichman.local.db";
- allow-update { 192.168.0.1; }; 
+key {{ pillar['dns']['key']}} {
+    algorithm hmac-md5;
+    secret "{{ pillar['dns']['secret'] }}";
+};
+  
+zone "deichman.local" {
+    type master;
+    notify no;
+    file "/var/cache/bind/deichman.local.db";
+    allow-update { key {{ pillar['dns']['key'] }}; };
 };
 
 zone "0.168.192.in-addr.arpa" {
- type master;
- file "/etc/bind/zones/rev.0.168.192.in-addr.arpa";
- allow-update { 192.168.0.1; }; 
+     type master;
+     notify no;
+     file "/var/cache/bind/db.192.168.0";
+     allow-update { key {{ pillar['dns']['key'] }}; };
+};
+
+#virtualbox network
+zone "50.168.192.in-addr.arpa" {
+     type master;
+     notify no;
+     file "/var/cache/bind/db.192.168.50";
+     allow-update { key {{ pillar['dns']['key'] }}; };
 };

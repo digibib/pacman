@@ -47,6 +47,7 @@ installpkgs:
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
+    - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
 
 /etc/exports:
@@ -65,6 +66,7 @@ installpkgs:
 /etc/bind/named.conf.options:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.options
+    - template: jinja
     - mode: 750
     - require:
       - pkg: installpkgs
@@ -72,6 +74,7 @@ installpkgs:
 /etc/bind/named.conf.local:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.local
+    - template: jinja
     - mode: 750
     - require:
       - pkg: installpkgs
@@ -91,9 +94,6 @@ installpkgs:
     - name: iptables-restore < /etc/iptables.up.rules
     - watch:
       - file: /etc/iptables.up.rules
-    - require:
-      - file: /etc/default/isc-dhcp-server
-      - file: /etc/dhcp/dhcpd.conf
 
 ##########
 # TFTPBOOT FOLDER STRUCTURE
@@ -127,14 +127,6 @@ searchimage:
     - name: /tftpboot/boot/newimages/searchstation-newest.iso
     - source: {{ pillar['filerepo'] }}/newimages/searchstation-newest.iso
     - source_hash: {{ pillar['filerepo'] }}/newimages/searchstation-newest.md5
-
-# mount:
-#   cmd.run:
-#     - name: mount -o loop,ro,remount /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage
-#     - require:
-#       - cmd: mkdirs
-#       - file: mycelimage
-#       - service: nfs-kernel-server
 
 ##########
 # SERVICES

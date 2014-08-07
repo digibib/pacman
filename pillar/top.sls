@@ -2,3 +2,4 @@
 base:
   '*':
     - pacman
+    - pacman.admin
