@@ -3,12 +3,10 @@
 zone "deichman.local" IN {
  type master;
  file "/etc/bind/zones/deichman.local.db";
- allow-updates { 192.168.0.1; }; // IP of DHCP server
+ allow-update { 192.168.0.1; }; // IP of DHCP server
 };
-
-and so we can also do reverse lookups too, we’ll also add a reverse lookup zone too:-
 
 zone "0.168.192.in-addr.arpa" {
  type master;
  file "/etc/bind/zones/rev.0.168.192.in-addr.arpa";
-}
+};

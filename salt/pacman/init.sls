@@ -66,11 +66,15 @@ installpkgs:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.options
     - mode: 750
+    - require:
+      - pkg: installpkgs
 
 /etc/bind/named.conf.local:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.local
     - mode: 750
+    - require:
+      - pkg: installpkgs
 
 ##########
 # IPTABLES
@@ -102,7 +106,6 @@ installpkgs:
     - file_mode: 644
     - source: {{ pillar['saltfiles'] }}/tftpboot
     - include_empty: True
-
 
 ##########
 # IMAGES
@@ -166,3 +169,13 @@ remount:
     - watch: 
       - service: nfs-kernel-server
       - file: mycelimage
+
+bind9:
+  service:
+    - running
+    - require:
+      - file: /etc/bind/named.conf.options
+      - file: /etc/bind/named.conf.local
+    - watch:
+      - file: /etc/bind/named.conf.options
+      - file: /etc/bind/named.conf.local
