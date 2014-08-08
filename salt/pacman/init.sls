@@ -21,6 +21,7 @@ installpkgs:
       - openssh-server
       - salt-master
       - bind9
+      - apparmor
     - skip_verify: True
 
 ##########

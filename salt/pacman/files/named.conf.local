@@ -13,7 +13,7 @@ zone "deichman.local" IN {
     file "/etc/bind/db.deichman.local";
     #allow-update { key {{ pillar['dns']['key'] }}; };
     allow-update { key "rndc-key"; };
-    journal "/etc/bind/deichman.local.jnl";
+    journal "/var/lib/bind/deichman.local.jnl";
 };
 
 zone "0.168.192.in-addr.arpa" {
@@ -22,7 +22,7 @@ zone "0.168.192.in-addr.arpa" {
      file "/etc/bind/db.192.168.0";
      #allow-update { key {{ pillar['dns']['key'] }}; };
      allow-update { key "rndc-key"; };
-     journal "/etc/bind/db.192.168.0.jnl";
+     journal "/var/lib/bind/db.192.168.0.jnl";
 };
 
 #virtualbox network
@@ -32,5 +32,5 @@ zone "50.168.192.in-addr.arpa" {
      file "/etc/bind/db.192.168.50";
      #allow-update { key {{ pillar['dns']['key'] }}; };
      allow-update { key "rndc-key"; };
-     journal "/etc/bind/db.192.168.50.jnl";
+     journal "/var/lib/bind/db.192.168.50.jnl";
 };
