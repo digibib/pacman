@@ -2,17 +2,6 @@
 # CUSTOM STATE TO DEPLOY IMAGE AND RESTART NDS
 ##########
 
-/tftpboot:
-  file.recurse:
-    - template: jinja
-    - file_mode: 644
-    - source: {{ pillar['saltfiles'] }}/tftpboot
-    - include_empty: True
-
-##########
-# IMAGES
-##########
-
 # make sure dirs exist first
 mkdirs:
   cmd.run:
