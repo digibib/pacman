@@ -1,0 +1,15 @@
+;
+; BIND data file for local zone
+;
+$TTL  604800
+@ IN  SOA ns.deichman.local. root.deichman.local. (
+            1   ; Serial
+       604800   ; Refresh
+        86400   ; Retry
+      2419200   ; Expire
+       604800 ) ; Negative Cache TTL
+;
+deichman.local. NS  ns.deichman.local.
+
+@   IN  A 192.168.0.1
+ns  IN  A 192.168.0.1

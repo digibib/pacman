@@ -1,6 +1,7 @@
 # any secret things goes here
 user: admin
 pass: secret
-dnsforward: 10.0.2.15
-dnskey: ddns_key
-dnssecret: ddns_secret
+dns:
+  forward: 10.0.2.15
+  key: ddns_key
+  secret: ddns_secret

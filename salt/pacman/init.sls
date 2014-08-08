@@ -63,11 +63,24 @@ installpkgs:
 # DNS
 ##########
 
+# need some apparmor permissions for dhcp
+#/etc/apparmor.d/usr.sbin.dhcpd:
+
+/etc/rndc.key:
+  file.managed:
+    - user: root
+    - group: bind
+    - mode: 644
+
+/etc/apparmor.d/usr.sbin.dhcpd:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/usr.sbin.dhcpd
+
 /etc/bind/named.conf.options:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.options
     - template: jinja
-    - mode: 750
+    - mode: 644
     - require:
       - pkg: installpkgs
 
@@ -75,9 +88,27 @@ installpkgs:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.local
     - template: jinja
-    - mode: 750
+    - mode: 644
     - require:
       - pkg: installpkgs
+
+# dns zone file for local net
+/var/lib/bind/db.deichman.local:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/db.deichman.local.dns
+    - template: jinja
+    - mode: 644
+    - require:
+      - pkg: installpkgs
+
+# reverse dns zone for local net
+/var/lib/bind/db.192.168.0:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/db.192.168.0.dns
+    - template: jinja
+    - mode: 644
+    - require:
+      - pkg: installpkgs      
 
 ##########
 # IPTABLES
@@ -171,3 +202,9 @@ bind9:
     - watch:
       - file: /etc/bind/named.conf.options
       - file: /etc/bind/named.conf.local
+
+apparmor:
+  service:
+  - running
+  - watch:
+    - file: /etc/apparmor.d/usr.sbin.dhcpd

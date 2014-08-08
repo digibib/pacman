@@ -1,28 +1,36 @@
 #/etc/bind/named.conf.local
 
-key {{ pillar['dns']['key']}} {
-    algorithm hmac-md5;
-    secret "{{ pillar['dns']['secret'] }}";
-};
+include "/etc/bind/rndc.key";
+#key {{ pillar['dns']['key'] }} {
+#    #algorithm hmac-md5;
+#    algorithm HMAC-MD5.SIG-ALG.REG.INT;
+#    secret {{ pillar['dns']['secret'] }};
+#};
   
-zone "deichman.local" {
+zone "deichman.local" IN {
     type master;
-    notify no;
-    file "/var/cache/bind/deichman.local.db";
-    allow-update { key {{ pillar['dns']['key'] }}; };
+    notify yes;
+    file "/etc/bind/db.deichman.local";
+    #allow-update { key {{ pillar['dns']['key'] }}; };
+    allow-update { key "rndc-key"; };
+    journal "/etc/bind/deichman.local.jnl";
 };
 
 zone "0.168.192.in-addr.arpa" {
      type master;
-     notify no;
-     file "/var/cache/bind/db.192.168.0";
-     allow-update { key {{ pillar['dns']['key'] }}; };
+     notify yes;
+     file "/etc/bind/db.192.168.0";
+     #allow-update { key {{ pillar['dns']['key'] }}; };
+     allow-update { key "rndc-key"; };
+     journal "/etc/bind/db.192.168.0.jnl";
 };
 
 #virtualbox network
 zone "50.168.192.in-addr.arpa" {
      type master;
      notify no;
-     file "/var/cache/bind/db.192.168.50";
-     allow-update { key {{ pillar['dns']['key'] }}; };
+     file "/etc/bind/db.192.168.50";
+     #allow-update { key {{ pillar['dns']['key'] }}; };
+     allow-update { key "rndc-key"; };
+     journal "/etc/bind/db.192.168.50.jnl";
 };
