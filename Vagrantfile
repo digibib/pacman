@@ -3,7 +3,7 @@
 
 require 'fileutils'  
 
-pillar_example_files = 'pillar/**/admin.sls.example'
+pillar_example_files = 'pillar/**/*.sls.example'
 
 Dir.glob(pillar_example_files).each do | example_file |
   pillar_file =  example_file.sub(/\.example$/, '')

@@ -3,3 +3,4 @@ base:
   '*':
     - pacman
     - pacman.admin
+    - pacman.clients

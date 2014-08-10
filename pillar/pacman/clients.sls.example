@@ -1,0 +1,12 @@
+---
+# This file includes static clients for minions, with a default fallback
+clients:
+  default:
+    - 
+      name: examplehost
+      mac: 08:00:27:96:5e:8c
+      ip: 192.168.0.10
+    -
+      name: examplehost2
+      mac: 08:00:27:96:5e:8d
+      ip: 192.168.0.11
