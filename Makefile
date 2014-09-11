@@ -11,8 +11,10 @@ up:
 	vagrant up
 
 provision: 
-	# faster than vagrant provision
 	vagrant ssh -c 'sudo salt-call --local state.highstate'
+
+upgrade: 
+	vagrant ssh -c 'sudo salt-call --local state.sls pacman.upgrade'
 
 clean:
 	vagrant destroy --force

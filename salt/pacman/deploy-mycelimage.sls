@@ -1,11 +1,11 @@
 ##########
-# CUSTOM STATE TO DEPLOY IMAGE AND RESTART NDS
+# DEPLOY MYCEL IMAGE AND RESTART NFS
 ##########
 
-# make sure dirs exist first
+# basic tftpboot directory structure
 mkdirs:
   cmd.run:
-  - name: mkdir -p /tftpboot/boot/{newimages/{mycelimage,searchstation},mounts/{mycelimage,searchstation}}
+    - name: mkdir -p /tftpboot/boot/{newimages/{mycelimage,searchstation},mounts/{mycelimage,searchstation}}
 
 mycelimage:
   file.managed:
@@ -13,8 +13,8 @@ mycelimage:
     - source: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.iso
     - source_hash: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.md5
 
-nfs-kernel-server:
-  service:
-    - running
+remount:
+  cmd.run:
+    - name: /usr/local/bin/clientserver.sh restart
     - watch:
       - file: mycelimage
