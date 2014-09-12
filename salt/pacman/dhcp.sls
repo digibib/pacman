@@ -27,6 +27,7 @@ isc-dhcp-server:
 /etc/bind/rndc.key:
   file.managed:
     - mode: '0644'
+    - group: dhcpd
 
 ##########
 # DHCPD.CONF - ADD STATIC CLIENTS HOSTNAMES AND IP
@@ -40,7 +41,8 @@ dhcpd_blockreplace:
     - marker_start: "### DHCP STATIC HOSTS START --DO NOT EDIT-- ###"
     - marker_end: "### DHCP STATIC HOSTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( "clients:{{ grains['id'] }}", pillar['clients']['default'] ) %}
+      {% set client_id = "clients:"+grains.id %}
+      {% for client in salt['pillar.get']( client_id, pillar['clients']['default'] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
