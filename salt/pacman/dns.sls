@@ -28,7 +28,7 @@ bind9:
       - pkg: bind9
 
 # dns zone file for local net
-/var/lib/bind/db.deichman.local:
+/etc/bind/db.deichman.local:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/db.deichman.local.dns
     - template: jinja
@@ -37,7 +37,7 @@ bind9:
       - pkg: bind9
 
 # reverse dns zone for local net
-/var/lib/bind/db.192.168.0:
+/etc/bind/db.192.168.0:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/db.192.168.0.dns
     - template: jinja

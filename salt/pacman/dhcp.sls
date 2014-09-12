@@ -27,7 +27,6 @@ isc-dhcp-server:
 /etc/bind/rndc.key:
   file.managed:
     - mode: '0644'
-    - group: dhcpd
 
 ##########
 # DHCPD.CONF - ADD STATIC CLIENTS HOSTNAMES AND IP
