@@ -52,5 +52,5 @@ dns-server:
       - file: /etc/bind/named.conf.options
       - file: /etc/bind/named.conf.local
     - watch:
-      - file: /etc/bind/named.conf.options
-      - file: /etc/bind/named.conf.local
+      - file: /etc/bind/db.192.168.0
+      - file: /etc/bind/db.deichman.local
