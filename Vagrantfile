@@ -37,21 +37,22 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "client" do |client|
-    # https://vagrantcloud.com/ubuntu/trusty64
+    # https://vagrantcloud.com/steigr/pxe
     client.vm.box = "trusty64"
+    #client.vm.box = "steigr/pxe"
 
     if Vagrant.has_plugin?("vagrant-cachier")
       client.cache.scope = :box
     end
 
     client.vm.network "private_network", ip: "192.168.50.11"
+    config.vm.provider "virtualbox" do |v|
+      #v.customize ["natnetwork", "add", "--netname", "cv_ext", "--network", "10.0.0.0/24"]
+      #v.customize ["modifyvm", :id, "--nic3", "natnetwork"]
+      #v.customize ["modifyvm", :id, "--nat-network3", "cv_ext"]
+    end
 
   end # ls-test
 
-  config.vm.provider "virtualbox" do |v|
-    #v.customize ["natnetwork", "add", "--netname", "cv_ext", "--network", "10.0.0.0/24"]
-    #v.customize ["modifyvm", :id, "--nic3", "natnetwork"]
-    #v.customize ["modifyvm", :id, "--nat-network3", "cv_ext"]
-  end
 
 end

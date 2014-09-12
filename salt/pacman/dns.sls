@@ -11,10 +11,6 @@ bind9:
     - group: bind
     - mode: 644
 
-/etc/apparmor.d/usr.sbin.dhcpd:
-  file.managed:
-    - source: {{ pillar['saltfiles'] }}/usr.sbin.dhcpd
-
 /etc/bind/named.conf.options:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/named.conf.options
