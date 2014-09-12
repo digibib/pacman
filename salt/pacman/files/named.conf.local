@@ -1,17 +1,11 @@
 #/etc/bind/named.conf.local
 
 include "/etc/bind/rndc.key";
-#key {{ pillar['dns']['key'] }} {
-#    #algorithm hmac-md5;
-#    algorithm HMAC-MD5.SIG-ALG.REG.INT;
-#    secret {{ pillar['dns']['secret'] }};
-#};
   
 zone "deichman.local" IN {
     type master;
     notify yes;
-    file "/etc/bind/db.deichman.local";
-    #allow-update { key {{ pillar['dns']['key'] }}; };
+    file "/var/lib/bind/db.deichman.local";
     allow-update { key "rndc-key"; };
     journal "/var/lib/bind/deichman.local.jnl";
 };
@@ -19,18 +13,16 @@ zone "deichman.local" IN {
 zone "0.168.192.in-addr.arpa" {
      type master;
      notify yes;
-     file "/etc/bind/db.192.168.0";
-     #allow-update { key {{ pillar['dns']['key'] }}; };
+     file "/var/lib/bind/db.192.168.0";
      allow-update { key "rndc-key"; };
      journal "/var/lib/bind/db.192.168.0.jnl";
 };
 
-#virtualbox network
+#virtualbox dns 
 zone "50.168.192.in-addr.arpa" {
      type master;
      notify no;
-     file "/etc/bind/db.192.168.50";
-     #allow-update { key {{ pillar['dns']['key'] }}; };
+     file "/var/lib/bind/db.192.168.50";
      allow-update { key "rndc-key"; };
      journal "/var/lib/bind/db.192.168.50.jnl";
 };

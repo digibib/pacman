@@ -4,6 +4,6 @@ base:
     - pacman.iptables
     - pacman.tftp
     - pacman.nfs
-    - pacman.dhcp
     - pacman.dns
+    - pacman.dhcp # depends on dns setup
 
