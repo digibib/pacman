@@ -19,10 +19,14 @@ isc-dhcp-server:
     - require:
       - pkg: isc-dhcp-server
 
-# allow access to bind9 and rdns.key
+# allow access to bind9 and rnds.key
 /etc/apparmor.d/usr.sbin.dhcpd:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/usr.sbin.dhcpd
+
+/etc/bind/rndc.key:
+  file.managed:
+    - mode: '0644'
 
 ##########
 # DHCPD.CONF - ADD STATIC CLIENTS HOSTNAMES AND IP
@@ -58,6 +62,7 @@ dhcpd-server:
       - file: /etc/dhcp/dhcpd.conf
       - file: /etc/default/isc-dhcp-server
       - file: /etc/apparmor.d/usr.sbin.dhcpd
+      - file: /etc/bind/rndc.key
     - require:
       - file: /etc/default/isc-dhcp-server
 
