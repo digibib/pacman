@@ -11,7 +11,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
     - context:
-      iface: {{ salt["pillar.get"](server+"network:lan:iface", "eth1") }}
+      iface: {{ salt["pillar.get"](server+":network:lan:iface", "eth1") }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -20,7 +20,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
-      gateway: {{ salt["pillar.get"](server+"network:wlan:gateway", "192.168.0.1") }}
+      gateway: {{ salt["pillar.get"](server+":network:wlan:gateway", "192.168.0.1") }}
     - require:
       - pkg: isc-dhcp-server
 
