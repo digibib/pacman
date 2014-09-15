@@ -5,8 +5,8 @@
 # Server ID
 {% set id = salt["grains.get"]("id", "default") %}
 # Mycel clients
-{% set mycelclients = "clients:mycelclients:"+id %}
+{% set mycelclients = "clients:"+id+":mycelclients" %}
 # Search clients
-{% set searchclients = "clients:searchclients:"+id %}
+{% set searchclients = "clients:"+id+":searchclients" %}
 # Image server settings
 {% set server = "servers:"+id %}

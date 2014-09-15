@@ -1,6 +1,7 @@
 ##########
 # IPTABLES
 ##########
+{% from 'pacman/common.sls' import server with context %}
 
 iptables:
   pkg.installed
@@ -13,6 +14,8 @@ iptables:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/iptables.up.rules
     - template: jinja
+    - context:
+      iface: {{ salt["pillar.get"](server+"network:wlan:iface", "eth0") }}
   cmd.wait:
     - name: iptables-restore < /etc/iptables.up.rules
     - watch:

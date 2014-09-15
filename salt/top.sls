@@ -1,5 +1,6 @@
 base:
   '*':
+    - pacman.common
     - pacman
     - pacman.iptables
     - pacman.tftp

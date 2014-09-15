@@ -1,8 +1,7 @@
 ##########
 # DHCP
 ##########
-include:
-  pacman.common
+{% from 'pacman/common.sls' import server,mycelclients,searchclients with context %}
 
 isc-dhcp-server:
   pkg.installed
@@ -12,7 +11,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
     - context:
-      iface: {{ pillar[server]['lan']['iface'] }}
+      iface: {{ salt["pillar.get"](server+"network:lan:iface", "eth1") }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -21,7 +20,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
-      gateway: {{ pillar[server]['wlan']['gateway'] }}
+      gateway: {{ salt["pillar.get"](server+"network:wlan:gateway", "192.168.0.1") }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -42,7 +41,7 @@ mycelclients_blockreplace:
     - marker_start: "### PXE MYCELCLIENTS START --DO NOT EDIT-- ###"
     - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( mycelclients, pillar['clients']['default'] ) %}
+      {% for client in salt['pillar.get']( mycelclients, pillar['clients']['default']['mycelclients'] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -51,7 +50,7 @@ mycelclients_blockreplace:
                   }
       {% endfor %}
     - require:
-      - file: /etc/dhcp/dhcpd.conf
+      - pkg: isc-dhcp-server
 
 # this block replaces static hosts with minion clients from pillar clients.sls
 searchclients_blockreplace:
@@ -61,7 +60,7 @@ searchclients_blockreplace:
     - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( searchclients, pillar['clients']['default'] ) %}
+      {% for client in salt['pillar.get']( searchclients, pillar['clients']['default']['searchclients'] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -70,7 +69,7 @@ searchclients_blockreplace:
                   }
       {% endfor %}
     - require:
-      - file: /etc/dhcp/dhcpd.conf
+      - pkg: isc-dhcp-server
 
 
 ##########

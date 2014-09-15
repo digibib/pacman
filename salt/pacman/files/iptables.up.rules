@@ -5,5 +5,5 @@
 :INPUT ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
--A POSTROUTING -o {{ pillar['external-nic'] }} -j MASQUERADE 
+-A POSTROUTING -o {{ iface }} -j MASQUERADE 
 COMMIT
