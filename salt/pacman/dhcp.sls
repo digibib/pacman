@@ -1,17 +1,17 @@
 ##########
 # DHCP
 ##########
-{%- set server = "servers:"+grains.id -%}
+# {%- set server = "servers:"+grains.id -%}
 
 isc-dhcp-server:
   pkg.installed
 
-/etc/default/isc-dhcp-server:
-  file.managed:
-    - template: jinja
-    - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
-    - require:
-      - pkg: isc-dhcp-server
+# /etc/default/isc-dhcp-server:
+#   file.managed:
+#     - template: jinja
+#     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
+#     - require:
+#       - pkg: isc-dhcp-server
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
