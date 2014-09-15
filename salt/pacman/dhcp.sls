@@ -1,9 +1,9 @@
 ##########
 # DHCP
 ##########
-{%- set id = salt["grains.get"]("id", "default") -%}
-{%- set clients = "clients:"+id -%}
-{%- set servers = "servers:"+id -%}
+{% set id = salt["grains.get"]("id", "default") %}
+{% set clients = "clients:"+id %}
+{% set servers = "servers:"+id %}
 
 isc-dhcp-server:
   pkg.installed
