@@ -12,6 +12,8 @@ isc-dhcp-server:
 #     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
 #     - require:
 #       - pkg: isc-dhcp-server
+#     - context:
+#       iface: eth0
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
