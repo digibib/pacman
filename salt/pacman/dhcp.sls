@@ -15,7 +15,7 @@ isc-dhcp-server:
     - require:
       - pkg: isc-dhcp-server
     - context:
-      iface: eth0
+      iface: eth1
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
