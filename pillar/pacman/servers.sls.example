@@ -1,0 +1,17 @@
+servers:
+  klientserverone:
+    network:
+      wlan: 
+        iface: eth0
+        gateway: 10.172.2.1
+      lan: 
+        iface: eth1
+        gateway: 192.168.0.1
+  klientservertwo:
+    network:
+      wlan: 
+        iface: eth1
+        gateway: 10.172.2.2
+      lan: 
+        iface: eth0
+        gateway: 192.168.0.1

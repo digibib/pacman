@@ -1,6 +1,7 @@
 ##########
 # DHCP
 ##########
+{%- set server = "servers:"+grains.id -%}
 
 isc-dhcp-server:
   pkg.installed
@@ -36,8 +37,8 @@ dhcpd_blockreplace:
     - marker_start: "### DHCP STATIC HOSTS START --DO NOT EDIT-- ###"
     - marker_end: "### DHCP STATIC HOSTS END --DO NOT EDIT-- ###"
     - content: |
-      {% set client_id = "clients:"+grains.id %}
-      {% for client in salt['pillar.get']( client_id, pillar['clients']['default'] ) %}
+      {% set clients = "clients:"+grains.id %}
+      {% for client in salt['pillar.get']( clients, pillar['clients']['default'] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
