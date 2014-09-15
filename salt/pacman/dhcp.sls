@@ -1,9 +1,8 @@
 ##########
 # DHCP
 ##########
-{% set id = salt["grains.get"]("id", "default") %}
-{% set clients = "clients:"+id %}
-{% set servers = "servers:"+id %}
+include:
+  pacman.common
 
 isc-dhcp-server:
   pkg.installed
@@ -12,15 +11,17 @@ isc-dhcp-server:
   file.managed:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
+    - context:
+      iface: {{ pillar[server]['lan']['iface'] }}
     - require:
       - pkg: isc-dhcp-server
-    - context:
-      iface: eth1
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
+    - context:
+      gateway: {{ pillar[server]['wlan']['gateway'] }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -34,14 +35,14 @@ isc-dhcp-server:
 ##########
 
 # this block replaces static hosts with minion clients from pillar clients.sls
-dhcpd_blockreplace:
+mycelclients_blockreplace:
   file.blockreplace:
     - name: /etc/dhcp/dhcpd.conf
     - template: jinja
-    - marker_start: "### DHCP STATIC HOSTS START --DO NOT EDIT-- ###"
-    - marker_end: "### DHCP STATIC HOSTS END --DO NOT EDIT-- ###"
+    - marker_start: "### PXE MYCELCLIENTS START --DO NOT EDIT-- ###"
+    - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( clients, pillar['clients']['default'] ) %}
+      {% for client in salt['pillar.get']( mycelclients, pillar['clients']['default'] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -50,7 +51,27 @@ dhcpd_blockreplace:
                   }
       {% endfor %}
     - require:
-      - pkg: isc-dhcp-server
+      - file: /etc/dhcp/dhcpd.conf
+
+# this block replaces static hosts with minion clients from pillar clients.sls
+searchclients_blockreplace:
+  file.blockreplace:
+    - name: /etc/dhcp/dhcpd.conf
+    - template: jinja
+    - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
+    - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
+    - content: |
+      {% for client in salt['pillar.get']( searchclients, pillar['clients']['default'] ) %}
+              host {{ client['name'] }} {
+                  hardware ethernet {{ client['mac'] }};
+                  fixed-address {{ client['ip'] }};
+                  ddns-hostname "{{ client['name'] }}";
+                  option host-name "{{ client['name'] }}";
+                  }
+      {% endfor %}
+    - require:
+      - file: /etc/dhcp/dhcpd.conf
+
 
 ##########
 # SERVICES
