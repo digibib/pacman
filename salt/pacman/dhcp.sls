@@ -1,20 +1,21 @@
 ##########
 # DHCP
 ##########
-{% set id = salt["grains.get"]("id", "default") %}
-{% set clients = "clients:"+id %}
+{%- set id = salt["grains.get"]("id", "default") -%}
+{%- set clients = "clients:"+id -%}
+{%- set servers = "servers:"+id -%}
 
 isc-dhcp-server:
   pkg.installed
 
-# /etc/default/isc-dhcp-server:
-#   file.managed:
-#     - template: jinja
-#     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
-#     - require:
-#       - pkg: isc-dhcp-server
-#     - context:
-#       iface: eth0
+/etc/default/isc-dhcp-server:
+  file.managed:
+    - template: jinja
+    - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
+    - require:
+      - pkg: isc-dhcp-server
+    - context:
+      iface: eth0
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
