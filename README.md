@@ -9,4 +9,25 @@ Installation is done by SaltStack provisioning, meaning there is a master which 
 
 ## Setup
 
-Requires Vagrant and Virtualbox with Extension Pack
+Requires Vagrant ( and Virtualbox with Extension Pack for PXE client boot setup)
+
+### Usage
+
+`make` downloads vagrant image, sets up and provisions highstate
+
+other commands are:
+
+`make provision`    # run highstate
+`make upgrade`      # upgrade packages on box
+`make clean`        # destroy everything and cleanup
+
+### Advanced
+
+`vagrant ssh`       # enter vagrant box and play around
+
+Salt states can also be run directly, e.g. 
+
+`vagrant ssh -c 'sudo salt-call --local state.sls pacman.dhcp'    # run dhcp state (install and setup dhcp server)
+
+## Illustration
+![Alt text](pacman.png?raw=true "Pacman Saltflow")
