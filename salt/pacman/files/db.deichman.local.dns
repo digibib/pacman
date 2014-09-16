@@ -11,5 +11,5 @@ $TTL  604800
 ;
 deichman.local. NS  ns.deichman.local.
 
-@   IN  A 192.168.0.1
-ns  IN  A 192.168.0.1
+@   IN  A {{ nameserver }}
+ns  IN  A {{ nameserver }}

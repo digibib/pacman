@@ -10,19 +10,10 @@ zone "deichman.local" IN {
     journal "/var/lib/bind/deichman.local.jnl";
 };
 
-zone "0.168.192.in-addr.arpa" {
+zone "168.192.in-addr.arpa" {
      type master;
      notify yes;
-     file "/var/lib/bind/db.192.168.0";
+     file "/var/lib/bind/db.192.168";
      allow-update { key "rndc-key"; };
-     journal "/var/lib/bind/db.192.168.0.jnl";
-};
-
-#virtualbox dns 
-zone "50.168.192.in-addr.arpa" {
-     type master;
-     notify no;
-     file "/var/lib/bind/db.192.168.50";
-     allow-update { key "rndc-key"; };
-     journal "/var/lib/bind/db.192.168.50.jnl";
+     journal "/var/lib/bind/db.192.168.jnl";
 };

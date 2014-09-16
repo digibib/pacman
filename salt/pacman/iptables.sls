@@ -20,3 +20,11 @@ iptables:
     - name: iptables-restore < /etc/iptables.up.rules
     - watch:
       - file: /etc/iptables.up.rules
+
+# /etc/network/interfaces:
+#   file.managed:
+#     - source: {{ pillar['saltfiles'] }}/network-interfaces
+#     - template: jinja
+#     - context:
+#       wlan_iface: {{ salt["pillar.get"](server+":network:wlan:iface", "eth0") }}
+#       lan_iface: {{ salt["pillar.get"](server+":network:lan:iface", "eth1") }}

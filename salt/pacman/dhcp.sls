@@ -76,6 +76,11 @@ searchclients_blockreplace:
 # SERVICES
 ##########
 
+{% if grains.id == "klientserverhoved" %}
+dhcpd-server:
+  service.dead:
+    - name: isc-dhcp-server
+{% else %}
 dhcpd-server:
   service.running:
     - name: isc-dhcp-server
@@ -85,6 +90,7 @@ dhcpd-server:
       - file: /etc/apparmor.d/usr.sbin.dhcpd
     - require:
       - file: /etc/default/isc-dhcp-server
+{% endif %}
 
 apparmor-service:
   service.running:

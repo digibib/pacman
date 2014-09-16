@@ -1,6 +1,7 @@
 ##########
 # DNS
 ##########
+{% from 'pacman/common.sls' import server with context %}
 
 bind9:
   pkg.installed
@@ -27,13 +28,15 @@ bind9:
     - source: {{ pillar['saltfiles'] }}/db.deichman.local.dns
     - template: jinja
     - mode: 644
+    - context:
+      nameserver: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
     - require:
       - pkg: bind9
 
 # reverse dns zone for local net
-/var/lib/bind/db.192.168.0:
+/var/lib/bind/db.192.168:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/db.192.168.0.dns
+    - source: {{ pillar['saltfiles'] }}/db.192.168.dns
     - template: jinja
     - mode: 644
     - require:
@@ -46,5 +49,5 @@ dns-server:
       - file: /etc/bind/named.conf.options
       - file: /etc/bind/named.conf.local
     - watch:
-      - file: /var/lib/bind/db.192.168.0
+      - file: /var/lib/bind/db.192.168
       - file: /var/lib/bind/db.deichman.local

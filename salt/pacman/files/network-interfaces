@@ -1,13 +1,14 @@
 auto lo
 iface lo inet loopback
 
-# eth0
-auto eth0
-iface eth0 inet dhcp
+# wlan
+# {{ wlan_iface }}
+auto {{ wlan_iface }}
+iface {{ wlan_iface }} inet dhcp
 
 # lan
-auto eth1
-iface eth1 inet static
+auto {{ lan_iface }}
+iface {{ lan_iface }} inet static
     #pre-up iptables-restore < /etc/iptables.up.rules
     address 192.168.0.1
     netmask 255.255.255.0

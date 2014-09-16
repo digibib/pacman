@@ -17,7 +17,3 @@ installpkgs:
       - salt-master
       - apparmor
     - skip_verify: True
-
-# /etc/network/interfaces:
-#   file.managed:
-#     - source: {{ pillar['saltfiles'] }}/network-interfaces
