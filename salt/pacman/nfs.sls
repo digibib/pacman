@@ -18,7 +18,7 @@ nfs-kernel-server:
   file.append:
     - text:
       - /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage iso9660 auto,loop,ro 0 0
-      - /tftpboot/boot/newimages/clientimage-newest.iso /tftpboot/boot/mounts/clientimage iso9660 auto,loop,ro 0 0
+      - /tftpboot/boot/newimages/searchstation-newest.iso /tftpboot/boot/mounts/searchstation iso9660 auto,loop,ro 0 0
 
 nfs-server:
   service.running:
