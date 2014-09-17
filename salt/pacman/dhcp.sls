@@ -21,6 +21,9 @@ isc-dhcp-server:
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
       gateway: {{ salt["pillar.get"](server+":network:wlan:gateway", "192.168.0.1") }}
+      broadcast: {{ salt["pillar.get"](server+":network:wlan:broadcast", "192.168.0.255") }}
+      subnet: {{ salt["pillar.get"](server+":network:wlan:broadcast", "192.168.0.0") }}
+      netmask: {{ salt["pillar.get"](server+":network:wlan:broadcast", "255.255.0.0") }}
     - require:
       - pkg: isc-dhcp-server
 

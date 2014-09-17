@@ -5,9 +5,10 @@
 
 deichmansplash.lss
 
-0BVelkommen til Deichmans prosjekt med halvtykke klienter 0B(Basert paa Linux 0FLubuntu 14.04
+Velkommen til Deichmans prosjekt med halvtykke klienter 
+(Linux Lubuntu 14.04)
 
 For en liste over andre tilgjengelige oppstartsbilder, trykk [TAB].
 For oppstartsalternativer trykk [F2]
 
-Trykk 0F[ENTER] 0Bfor aa starte med en gang
+Trykk [ENTER] for start, eller vent
