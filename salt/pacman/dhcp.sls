@@ -20,10 +20,12 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
-      gateway: {{ salt["pillar.get"](server+":network:wlan:gateway", "192.168.0.1") }}
-      broadcast: {{ salt["pillar.get"](server+":network:wlan:broadcast", "192.168.0.255") }}
-      subnet: {{ salt["pillar.get"](server+":network:wlan:broadcast", "192.168.0.0") }}
-      netmask: {{ salt["pillar.get"](server+":network:wlan:broadcast", "255.255.0.0") }}
+      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
+      broadcast: {{ salt["pillar.get"](server+":network:lan:broadcast", "192.168.0.255") }}
+      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", "192.168.0.0") }}
+      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", "255.255.0.0") }}
+      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", "192.168.0.20") }}
+      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", "192.168.0.30") }}
     - require:
       - pkg: isc-dhcp-server
 

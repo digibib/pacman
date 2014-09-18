@@ -2,6 +2,7 @@
 # TFTPBOOT FOLDER STRUCTURE
 # includes pxeboot files, pxe settings and boot images 
 ##########
+{% from 'pacman/common.sls' import server,mycelclients,searchclients with context %}
 
 tftpd-hpa:
   pkg.installed
@@ -23,6 +24,8 @@ mkdirs:
     - file_mode: 644
     - source: {{ pillar['saltfiles'] }}/tftpboot
     - include_empty: True
+    - context:
+      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
 
 tftpd-server:
   service.running:

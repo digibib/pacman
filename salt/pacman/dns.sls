@@ -23,6 +23,9 @@ bind9:
       - pkg: bind9
 
 # dns zone file for local net
+/var/lib/bind/db.deichman.local.jnl:
+  file.absent
+
 /var/lib/bind/db.deichman.local:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/db.deichman.local.dns
@@ -32,8 +35,12 @@ bind9:
       nameserver: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
     - require:
       - pkg: bind9
+      - file: /var/lib/bind/db.deichman.local.jnl
 
 # reverse dns zone for local net
+/var/lib/bind/db.192.168.jnl:
+  file.absent
+
 /var/lib/bind/db.192.168:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/db.192.168.dns
@@ -41,6 +48,7 @@ bind9:
     - mode: 644
     - require:
       - pkg: bind9
+      - file: /var/lib/bind/db.192.168.jnl
 
 dns-server:
   service.running:
