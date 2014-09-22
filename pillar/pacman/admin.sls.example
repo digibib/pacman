@@ -3,5 +3,3 @@ user: admin
 pass: secret
 dns:
   forward: 10.0.2.15
-  key: ddns_key
-  secret: ddns_secret

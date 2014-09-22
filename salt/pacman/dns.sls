@@ -32,7 +32,7 @@ bind9:
     - template: jinja
     - mode: 644
     - context:
-      nameserver: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
+      nameserver: {{ salt["pillar.get"](server+":lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
     - require:
       - pkg: bind9
       - file: /var/lib/bind/db.deichman.local.jnl

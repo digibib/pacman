@@ -2,8 +2,8 @@
 # SLS FOR PILLAR AND GRAIN COMMON VARIABLES
 ##########
 
-# Server ID
-{% set id = salt["grains.get"]("id", "default") %}
+# Use Server ID from grains, if not found in servers.sls, use default
+{% set id = salt["grains.get"]("id", "") %}
 # Mycel clients
 {% set mycelclients = "clients:"+id+":mycelclients" %}
 # Search clients

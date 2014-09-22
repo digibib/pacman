@@ -11,7 +11,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
     - context:
-      iface: {{ salt["pillar.get"](server+":network:lan:iface", "eth1") }}
+      iface: {{ salt["pillar.get"](server+":network:lan:iface", pillar['servers']['default']['network']['lan']['iface']) }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -20,12 +20,12 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
-      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
-      broadcast: {{ salt["pillar.get"](server+":network:lan:broadcast", "192.168.0.255") }}
-      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", "192.168.0.0") }}
-      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", "255.255.0.0") }}
-      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", "192.168.0.20") }}
-      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", "192.168.0.30") }}
+      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
+      broadcast: {{ salt["pillar.get"](server+":network:lan:broadcast", pillar['servers']['default']['network']['lan']['broadcast']) }}
+      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", pillar['servers']['default']['network']['lan']['subnet']) }}
+      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", pillar['servers']['default']['network']['lan']['netmask']) }}
+      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", pillar['servers']['default']['network']['lan']['pool_upper']) }}
+      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", pillar['servers']['default']['network']['lan']['pool_lower']) }}
     - require:
       - pkg: isc-dhcp-server
 

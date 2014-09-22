@@ -15,7 +15,7 @@ iptables:
     - source: {{ pillar['saltfiles'] }}/iptables.up.rules
     - template: jinja
     - context:
-      iface: {{ salt["pillar.get"](server+":network:wlan:iface", "eth0") }}
+      iface: {{ salt["pillar.get"](server+":network:wlan:iface", pillar['servers']['default']['network']['wlan']['iface']) }}
   cmd.run:
     - name: iptables-restore < /etc/iptables.up.rules
     - watch:

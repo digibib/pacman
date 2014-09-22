@@ -25,7 +25,7 @@ mkdirs:
     - source: {{ pillar['saltfiles'] }}/tftpboot
     - include_empty: True
     - context:
-      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", "192.168.0.1") }}
+      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
 
 tftpd-server:
   service.running:

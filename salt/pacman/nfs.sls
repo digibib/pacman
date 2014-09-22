@@ -11,8 +11,8 @@ nfs-kernel-server:
     - source: {{ pillar['saltfiles'] }}/nfs-exports
     - template: jinja
     - context:
-      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", "192.168.0.0") }}
-      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", "255.255.255.0") }}
+      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", pillar['servers']['default']['network']['lan']['subnet']) }}
+      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", pillar['servers']['default']['network']['lan']['netmask']) }}
 
 /usr/local/bin/clientserver.sh:
   file.managed:
@@ -24,3 +24,11 @@ nfs-server:
     - name: nfs-kernel-server
     - require:
       - file: /etc/exports
+
+reload_mounts:
+  cmd.run:
+    - name: /usr/local/bin/clientserver.sh restart
+    - unless: mount | grep -e mycelclient -e searchstation
+    - watch:
+      - file: /etc/exports
+      - file: /usr/local/bin/clientserver.sh
