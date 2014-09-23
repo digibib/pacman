@@ -26,7 +26,10 @@ Vagrant.configure(2) do |config|
     server.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
-      salt.install_type = "stable"
+      #salt.always_install = true
+      salt.bootstrap_options = "-g https://github.com/saltstack/salt.git"
+      salt.install_args = " v2014.7.0rc2"
+      salt.install_type = "git"
       salt.verbose = true
       salt.pillar_data
     end
