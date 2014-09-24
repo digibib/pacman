@@ -24,8 +24,8 @@ isc-dhcp-server:
       broadcast: {{ salt["pillar.get"](server+":network:lan:broadcast", pillar['servers']['default']['network']['lan']['broadcast']) }}
       subnet: {{ salt["pillar.get"](server+":network:lan:subnet", pillar['servers']['default']['network']['lan']['subnet']) }}
       netmask: {{ salt["pillar.get"](server+":network:lan:netmask", pillar['servers']['default']['network']['lan']['netmask']) }}
-      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", pillar['servers']['default']['network']['lan']['pool_upper']) }}
-      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", pillar['servers']['default']['network']['lan']['pool_lower']) }}
+      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", pillar['servers']['default']['network']['lan']['pool_lower']) }}
+      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", pillar['servers']['default']['network']['lan']['pool_upper']) }}
     - require:
       - pkg: isc-dhcp-server
 

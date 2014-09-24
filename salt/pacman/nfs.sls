@@ -28,7 +28,6 @@ nfs-server:
 reload_mounts:
   cmd.run:
     - name: /usr/local/bin/clientserver.sh restart
-    - unless: mount | grep -e mycelclient -e searchstation
     - watch:
       - file: /etc/exports
       - file: /usr/local/bin/clientserver.sh
