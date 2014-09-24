@@ -46,7 +46,8 @@ mycelclients_blockreplace:
     - marker_start: "### PXE MYCELCLIENTS START --DO NOT EDIT-- ###"
     - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( mycelclients, pillar['clients']['default']['mycelclients'] ) %}
+      {% set defaultmycel = salt['pillar.get']('clients:default:mycelclients') %}
+      {% for client in salt['pillar.get']( mycelclients, defaultmycel ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -65,7 +66,8 @@ searchclients_blockreplace:
     - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( searchclients, pillar['clients']['default']['searchclients'] ) %}
+      {% set defaultsearch = salt['pillar.get']('clients:default:searchclients') %}
+      {% for client in salt['pillar.get']( searchclients, defaultsearch ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
