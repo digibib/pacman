@@ -11,6 +11,8 @@ bind9:
     - source: {{ pillar['saltfiles'] }}/named.conf.options
     - template: jinja
     - mode: 644
+    - context:
+      forwarder: {{ salt["pillar.get"](server+":wlan:gateway", pillar['servers']['default']['network']['wlan']['gateway']) }}
     - require:
       - pkg: bind9
 
@@ -53,9 +55,8 @@ bind9:
 dns-server:
   service.running:
     - name: bind9
-    - require:
+    - watch:
       - file: /etc/bind/named.conf.options
       - file: /etc/bind/named.conf.local
-    - watch:
       - file: /var/lib/bind/db.192.168
       - file: /var/lib/bind/db.deichman.local

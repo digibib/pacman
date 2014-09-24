@@ -11,7 +11,7 @@ options {
 
   // the all-0's placeholder.
   forwarders {
-   {{ pillar['dns']['forward'] }};
+   {{ forwarder }};
   };
 
   # query range you allow
