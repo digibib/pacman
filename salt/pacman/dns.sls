@@ -12,7 +12,7 @@ bind9:
     - template: jinja
     - mode: 644
     - context:
-      forwarder: {{ salt["pillar.get"](server+":wlan:gateway", pillar['servers']['default']['network']['wlan']['gateway']) }}
+      forwarder: {{ salt["pillar.get"](server+":network:wlan:gateway", pillar['servers']['default']['network']['wlan']['gateway']) }}
     - require:
       - pkg: bind9
 
@@ -34,7 +34,7 @@ bind9:
     - template: jinja
     - mode: 644
     - context:
-      nameserver: {{ salt["pillar.get"](server+":lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
+      nameserver: {{ salt["pillar.get"](server+":network:lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
     - require:
       - pkg: bind9
       - file: /var/lib/bind/db.deichman.local.jnl
