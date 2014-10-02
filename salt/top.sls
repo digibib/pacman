@@ -4,8 +4,8 @@ base:
     - pacman.tftp
     - pacman.nfs
     - pacman.dns
+    - pacman.iptables
   '* and not klientserverhoved':
     - match: compound
-    - pacman.iptables
     - pacman.dhcp # depends on dns setup
 
