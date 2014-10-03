@@ -27,7 +27,7 @@
   # bind9
   /etc/bind/*.key r,
 
-  /etc/dhcp/ r,etc
+  /etc/dhcp/ r,
   /etc/dhcp/** r,
   /etc/dhcpd{,6}.conf r,
   /etc/dhcpd{,6}_ldap.conf r,
