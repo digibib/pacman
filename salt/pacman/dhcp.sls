@@ -30,6 +30,12 @@ isc-dhcp-server:
       - pkg: isc-dhcp-server
 
 # allow access to bind9 and rnds.key
+/etc/bind/rndc.key:
+  file.managed:
+    - user: bind
+    - group: bind
+    - mode: '0644'
+
 /etc/apparmor.d/usr.sbin.dhcpd:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/usr.sbin.dhcpd
