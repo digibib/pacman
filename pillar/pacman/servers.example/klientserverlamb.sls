@@ -72,7 +72,7 @@ klientserverlamb:
         ip: "192.168.0.27"
         mac: "20:cf:30:9a:09:0b"
         name: lambklient9
-    searchstations:
+    searchclients:
       -
         ip: "192.168.0.15"
         mac: "00:01:2e:40:97:39"

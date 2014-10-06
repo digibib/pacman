@@ -36,7 +36,7 @@ klientserverbjerke:
         ip: "192.168.0.105"
         mac: "00:01:2e:3a:55:aa"
         name: bjerkeklient5
-    searchstations:
+    searchclients:
       -
         ip: "192.168.0.106"
         mac: "00:12:79:5f:1e:ca"
