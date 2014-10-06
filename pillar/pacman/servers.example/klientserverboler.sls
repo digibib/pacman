@@ -32,3 +32,4 @@ klientserverboler:
         ip: "192.168.0.104"
         mac: "48:5b:39:d2:b0:e3"
         name: bolerklient4
+
