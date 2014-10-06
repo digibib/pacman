@@ -26,6 +26,7 @@ mkdirs:
     - include_empty: True
     - context:
       gateway: {{ salt["pillar.get"](id+":server:network:lan:gateway", "192.168.0.1") }}
+      boot_params: {{ salt["pillar.get"](id+":server:boot:params", "") }}
 
 tftpd-server:
   service.running:

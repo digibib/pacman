@@ -12,6 +12,8 @@ klientserverbjerke:
       wlan:
         gateway: "10.172.17.100"
         iface: eth0
+      boot:
+        params: "snd-hda-intel.enable=0"
   clients:
     mycelclients:
       -

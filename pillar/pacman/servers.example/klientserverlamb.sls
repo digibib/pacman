@@ -12,6 +12,9 @@ klientserverlamb:
       wlan:
         gateway: "10.172.15.100"
         iface: eth0
+      boot:
+        params: "snd-hda-intel.enable=0"
+  clients:
     mycelclients:
       -
         ip: "192.168.0.20"

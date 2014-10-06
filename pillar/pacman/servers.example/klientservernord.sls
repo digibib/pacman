@@ -12,6 +12,8 @@ klientservernord:
       wlan:
         gateway: "10.172.16.100"
         iface: eth0
+      boot:
+        params: "snd-hda-intel.enable=0"
   clients:
     mycelclients:
       -

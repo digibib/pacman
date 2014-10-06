@@ -12,6 +12,8 @@ default:
       wlan:
         gateway: "10.172.2.1"
         iface: eth0
+      boot:
+        params: "snd-hda-intel.enable=0"
   clients:
     mycelclients:
       -
