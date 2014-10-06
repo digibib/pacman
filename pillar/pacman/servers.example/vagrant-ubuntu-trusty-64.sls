@@ -1,14 +1,14 @@
-vagrant-trusty64:
+vagrant-ubuntu-trusty-64:
   server:
     network: 
       lan: 
-        broadcast: "192.168.50.255"
         gateway: "192.168.50.10"
-        iface: eth1
-        netmask: "255.255.255.0"
+        broadcast: "192.168.50.255"
         pool_lower: "192.168.50.60"
         pool_upper: "192.168.50.70"
         subnet: "192.168.50.0"
+        netmask: "255.255.255.0"
+        iface: eth1
       wlan: 
         gateway: "10.172.2.1"
         iface: eth0

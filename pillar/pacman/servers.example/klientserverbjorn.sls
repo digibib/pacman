@@ -1,4 +1,4 @@
-default:
+klientserverbjorn:
   server:
     network:
       lan:
@@ -8,18 +8,17 @@ default:
         pool_upper: "192.168.0.70"
         subnet: "192.168.0.0"
         netmask: "255.255.255.0"
-        iface: eth1
-      wlan:
-        gateway: "10.172.2.1"
         iface: eth0
+      wlan:
+        gateway: "10.172.41.100"
+        iface: eth1
   clients:
     mycelclients:
       -
-        name: examplebox1
-        mac: b8:ca:3a:5b:c1:60
-        ip: 192.168.0.101
-    searchclients:
+        ip: "192.168.0.101"
+        mac: "00:01:2e:40:90:ce"
+        name: bjornklient1
       -
-        name: examplebox2
-        mac: 08:00:27:96:5e:8d
-        ip: 192.168.0.102
+        ip: "192.168.0.102"
+        mac: "00:01:2e:3a:ff:04"
+        name: bjornklient2
