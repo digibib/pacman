@@ -12,9 +12,9 @@ klientservermajor:
       wlan:
         gateway: "10.172.6.100"
         iface: eth0
-      boot:
-        params: "snd-hda-intel.id=SB snd-hda-intel.index=1"
   clients:
+    boot:
+      params: "snd-hda-intel.id=SB snd-hda-intel.index=1"
     mycelclients:
       -
         ip: "192.168.0.101"

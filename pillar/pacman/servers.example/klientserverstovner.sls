@@ -12,9 +12,9 @@ klientserverstovner:
       wlan:
         gateway: "10.172.11.100"
         iface: eth1
-      boot:
-        params: "snd-hda-intel.enable=0"
   clients:
+    boot:
+      params: "snd-hda-intel.enable=0"
     mycelclients:
       -
         ip: "192.168.0.101"
