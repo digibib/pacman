@@ -5,3 +5,4 @@ include:
   - pacman.admin
   - pacman.clients
   - pacman.servers
+  - pacman.vagrant-trusty64

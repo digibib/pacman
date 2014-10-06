@@ -1,7 +1,7 @@
 ##########
 # NFS 
 ##########
-{% from 'pacman/common.sls' import server with context %}
+{% from 'pacman/common.sls' import id with context %}
 
 nfs-kernel-server:
   pkg.installed
@@ -11,8 +11,8 @@ nfs-kernel-server:
     - source: {{ pillar['saltfiles'] }}/nfs-exports
     - template: jinja
     - context:
-      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", pillar['servers']['default']['network']['lan']['subnet']) }}
-      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", pillar['servers']['default']['network']['lan']['netmask']) }}
+      subnet: {{ salt["pillar.get"](id+":server:network:lan:subnet", "192.168.0.0") }}
+      netmask: {{ salt["pillar.get"](id+":server:network:lan:netmask", "255.255.255.0") }}
 
 /usr/local/bin/clientserver.sh:
   file.managed:

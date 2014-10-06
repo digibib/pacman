@@ -1,7 +1,7 @@
 ##########
 # DHCP
 ##########
-{% from 'pacman/common.sls' import server,mycelclients,searchclients with context %}
+{% from 'pacman/common.sls' import id with context %}
 
 isc-dhcp-server:
   pkg.installed
@@ -11,7 +11,7 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
     - context:
-      iface: {{ salt["pillar.get"](server+":network:lan:iface", pillar['servers']['default']['network']['lan']['iface']) }}
+      iface: {{ salt["pillar.get"](id+":server:network:lan:iface", "eth1") }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -20,12 +20,12 @@ isc-dhcp-server:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
     - context:
-      gateway: {{ salt["pillar.get"](server+":network:lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
-      broadcast: {{ salt["pillar.get"](server+":network:lan:broadcast", pillar['servers']['default']['network']['lan']['broadcast']) }}
-      subnet: {{ salt["pillar.get"](server+":network:lan:subnet", pillar['servers']['default']['network']['lan']['subnet']) }}
-      netmask: {{ salt["pillar.get"](server+":network:lan:netmask", pillar['servers']['default']['network']['lan']['netmask']) }}
-      pool_lower: {{ salt["pillar.get"](server+":network:lan:pool_lower", pillar['servers']['default']['network']['lan']['pool_lower']) }}
-      pool_upper: {{ salt["pillar.get"](server+":network:lan:pool_upper", pillar['servers']['default']['network']['lan']['pool_upper']) }}
+      gateway: {{ salt["pillar.get"](id+":server:network:lan:gateway", "192.168.0.1") }}
+      broadcast: {{ salt["pillar.get"](id+":server:network:lan:broadcast", "192.168.0.255") }}
+      subnet: {{ salt["pillar.get"](id+":server:network:lan:subnet", "192.168.0.0") }}
+      netmask: {{ salt["pillar.get"](id+":server:network:lan:netmask", "255.255.255.0") }}
+      pool_lower: {{ salt["pillar.get"](id+":server:network:lan:pool_lower", "192.168.0.60") }}
+      pool_upper: {{ salt["pillar.get"](id+":server:network:lan:pool_upper", "192.168.0.70") }}
     - require:
       - pkg: isc-dhcp-server
 
@@ -52,7 +52,7 @@ mycelclients_blockreplace:
     - marker_start: "### PXE MYCELCLIENTS START --DO NOT EDIT-- ###"
     - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( mycelclients, pillar['clients']['default']['mycelclients'] ) %}
+      {% for client in salt["pillar.get"](id+":clients:mycelclients", [] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -71,7 +71,7 @@ searchclients_blockreplace:
     - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt['pillar.get']( searchclients, pillar['clients']['default']['searchclients'] ) %}
+      {% for client in salt["pillar.get"](id+":clients:searchclients", [] ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -87,7 +87,7 @@ searchclients_blockreplace:
 # SERVICES
 ##########
 
-{% if grains.id == "klientserverhoved" %}
+{% if id == "klientserverhoved" %}
 dhcpd-server:
   service.dead:
     - name: isc-dhcp-server

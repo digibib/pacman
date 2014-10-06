@@ -1,7 +1,7 @@
 ##########
 # DNS
 ##########
-{% from 'pacman/common.sls' import server with context %}
+{% from 'pacman/common.sls' import id with context %}
 
 bind9:
   pkg.installed
@@ -34,7 +34,7 @@ bind9:
     - template: jinja
     - mode: 644
     - context:
-      nameserver: {{ salt["pillar.get"](server+":network:lan:gateway", pillar['servers']['default']['network']['lan']['gateway']) }}
+      nameserver: {{ salt["pillar.get"](id+":server:network:lan:gateway", "192.168.0.1") }}
     - require:
       - pkg: bind9
       - file: /var/lib/bind/db.deichman.local.jnl

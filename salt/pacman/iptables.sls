@@ -1,7 +1,7 @@
 ##########
 # IPTABLES
 ##########
-{% from 'pacman/common.sls' import server with context %}
+{% from 'pacman/common.sls' import id with context %}
 
 iptables:
   pkg.installed
@@ -15,7 +15,7 @@ iptables:
     - source: {{ pillar['saltfiles'] }}/iptables.up.rules
     - template: jinja
     - context:
-      iface: {{ salt["pillar.get"](server+":network:wlan:iface", pillar['servers']['default']['network']['wlan']['iface']) }}
+      iface: {{ salt["pillar.get"](id+":server:network:wlan:iface", "eth0") }}
   cmd.run:
     - name: iptables-restore < /etc/iptables.up.rules
     - watch:
@@ -26,5 +26,5 @@ iptables:
 #     - source: {{ pillar['saltfiles'] }}/network-interfaces
 #     - template: jinja
 #     - context:
-#       wlan_iface: {{ salt["pillar.get"](server+":network:wlan:iface", "eth0") }}
-#       lan_iface: {{ salt["pillar.get"](server+":network:lan:iface", "eth1") }}
+#       wlan_iface: {{ salt["pillar.get"](id+":server:network:wlan:iface", "eth0") }}
+#       lan_iface: {{ salt["pillar.get"](id+":server:network:lan:iface", "eth1") }}
