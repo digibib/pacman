@@ -33,6 +33,7 @@ bind9:
     - source: {{ pillar['saltfiles'] }}/db.deichman.local.dns
     - template: jinja
     - mode: 644
+    - replace: False
     - context:
       nameserver: {{ salt["pillar.get"](id+":server:network:lan:gateway", "192.168.0.1") }}
     - require:
@@ -47,6 +48,7 @@ bind9:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/db.192.168.dns
     - template: jinja
+    - replace: False
     - mode: 644
     - require:
       - pkg: bind9
