@@ -73,7 +73,7 @@ searchclients_blockreplace:
     - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt["pillar.get"](id+":clients:searchclients", [])) %}
+      {% for client in salt["pillar.get"](id+":clients:searchclients", []) %}
         {% if len(client) > 0 %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
