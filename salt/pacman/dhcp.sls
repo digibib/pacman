@@ -52,15 +52,13 @@ mycelclients_blockreplace:
     - marker_start: "### PXE MYCELCLIENTS START --DO NOT EDIT-- ###"
     - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt["pillar.get"](id+":clients:mycelclients", [] ) %}
-        {% if client['name'] %}
+      {% for client in salt["pillar.get"](id+":clients:mycelclients", None ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
                   ddns-hostname "{{ client['name'] }}";
                   option host-name "{{ client['name'] }}";
                   }
-        {% endif %}
       {% endfor %}
     - require:
       - pkg: isc-dhcp-server
@@ -73,15 +71,13 @@ searchclients_blockreplace:
     - marker_start: "### PXE SEARCHCLIENTS SPACE --DO NOT EDIT-- ###"
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
-      {% for client in salt["pillar.get"](id+":clients:searchclients", [] ) %}
-        {% if client['name'] %}
+      {% for client in salt["pillar.get"](id+":clients:searchclients", None ) %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
                   ddns-hostname "{{ client['name'] }}";
                   option host-name "{{ client['name'] }}";
                   }
-        {% endif %}
       {% endfor %}
     - require:
       - pkg: isc-dhcp-server
