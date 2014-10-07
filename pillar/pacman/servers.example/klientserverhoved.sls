@@ -14,7 +14,7 @@ klientserverhoved:
         iface: eth0
   clients:
     boot:
-      params: "snd-hda-intel.enable=0"
+      params: "snd-hda-intel.enable=0 --"
     mycelclients:
       -
         ip: "192.168.200.30"

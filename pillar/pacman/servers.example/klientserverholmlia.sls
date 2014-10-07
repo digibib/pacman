@@ -14,7 +14,7 @@ klientserverholmlia:
         iface: eth1
   clients:
     boot:
-      params: "snd-hda-intel.enable=0"
+      params: "snd-hda-intel.enable=0 --"
     mycelclients:
       -
         ip: "192.168.0.106"

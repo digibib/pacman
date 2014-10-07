@@ -14,14 +14,9 @@ vagrant-ubuntu-trusty-64:
         iface: eth0
   clients:
     boot:
-      params: "snd-hda-intel.enable=0"
+      params: "--"
     mycelclients:
       -
         name: vagrantbox1
         mac: b8:ca:3a:5b:c1:60
         ip: 192.168.50.101
-    searchclients:
-      -
-        name: vagrantbox2
-        mac: 08:00:27:96:5e:8d
-        ip: 192.168.50.102

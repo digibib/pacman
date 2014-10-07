@@ -24,6 +24,11 @@ Vagrant.configure(2) do |config|
       v.memory = 768
       v.customize ["modifyvm", :id, "--nic2", "hostonly", "--hostonlyadapter2", "vboxnet1" ]
     end
+    
+    # sync in servers.example pillar data
+    server.vm.provision :shell, 
+      inline: "rsync -avz --delete /srv/pillar/pacman/servers.example/ /srv/pillar/pacman/servers/" 
+
     server.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
