@@ -80,8 +80,3 @@ klientservermajor:
         ip: "192.168.0.120"
         mac: "d4:85:64:1a:5d:89"
         name: majpubskriver
-    searchclients:
-      -
-        ip: "192.168.0.121"
-        mac: "00:01:2e:bc:70:ff"
-        name: majklient21
