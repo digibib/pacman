@@ -53,7 +53,7 @@ mycelclients_blockreplace:
     - marker_end: "### PXE MYCELCLIENTS END --DO NOT EDIT-- ###"
     - content: |
       {% for client in salt["pillar.get"](id+":clients:mycelclients", []) %}
-        {% if len(client) > 0 %}
+        {% if client is defined %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
@@ -74,7 +74,7 @@ searchclients_blockreplace:
     - marker_end: "### PXE SEARCHCLIENTS SPACE END --DO NOT EDIT-- ###"
     - content: |
       {% for client in salt["pillar.get"](id+":clients:searchclients", []) %}
-        {% if len(client) > 0 %}
+        {% if client is defined %}
               host {{ client['name'] }} {
                   hardware ethernet {{ client['mac'] }};
                   fixed-address {{ client['ip'] }};
