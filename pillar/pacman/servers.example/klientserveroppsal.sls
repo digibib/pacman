@@ -10,6 +10,7 @@ klientserveroppsal:
         netmask: "255.255.255.0"
         iface: eth0
       wlan:
+        dns: "10.172.2.1"
         gateway: "10.172.8.100"
         iface: eth1
   clients:

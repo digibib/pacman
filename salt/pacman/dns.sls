@@ -12,7 +12,7 @@ bind9:
     - template: jinja
     - mode: 644
     - context:
-      forwarder: 10.172.2.1
+      forwarder: {{ salt["pillar.get"](id+":server:network:wlan:dns", "10.172.2.1") }}
     - require:
       - pkg: bind9
 

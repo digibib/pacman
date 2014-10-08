@@ -10,6 +10,7 @@ klientservergry:
         netmask: "255.255.255.0"
         iface: eth1
       wlan:
+        dns: "10.172.2.1"
         gateway: "10.172.4.100"
         iface: eth0
   clients:

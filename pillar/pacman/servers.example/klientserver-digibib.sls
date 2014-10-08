@@ -10,7 +10,8 @@ klientserver-digibib:
         netmask: "255.255.255.0"
         iface: eth1
       wlan:
-        gateway: "10.172.2.1"
+        dns: "10.172.2.1"
+        gateway: "10.172.3.124"
         iface: eth0
   clients:
     boot:

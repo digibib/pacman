@@ -9,8 +9,9 @@ vagrant-ubuntu-trusty-64:
         subnet: "192.168.50.0"
         netmask: "255.255.255.0"
         iface: eth1
-      wlan: 
-        gateway: "10.172.2.1"
+      wlan:
+        dns: "10.0.2.15"
+        gateway: "10.0.2.15"
         iface: eth0
   clients:
     boot:
