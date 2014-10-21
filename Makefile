@@ -25,5 +25,8 @@ import_iso:
 	vagrant ssh server -c 'sudo cp /srv/mycelimage-newest.iso /tftpboot/boot/newimages ; \
 	sudo /usr/local/bin/clientserver.sh restart'
 
+download_iso:
+	vagrant ssh server -c 'sudo salt-call --local state.sls pacman.deploy-mycelimage'
+
 clean:
 	vagrant destroy --force
