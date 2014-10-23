@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
     server.vm.network "private_network", ip: "192.168.50.10"
     server.vm.provider "virtualbox" do |v|
       v.memory = 768
+      v.customize ["hostonlyif", "create"]
       v.customize ["modifyvm", :id, "--nic2", "hostonly", "--hostonlyadapter2", "vboxnet1" ]
     end
     
@@ -32,9 +33,8 @@ Vagrant.configure(2) do |config|
     server.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
-      salt.always_install = false
       salt.bootstrap_options = "-g https://github.com/saltstack/salt.git"
-      salt.install_args = " v2014.7.0rc2"
+      salt.install_args = " v2014.7.0rc5"
       salt.install_type = "git"
       salt.verbose = true
       salt.pillar_data

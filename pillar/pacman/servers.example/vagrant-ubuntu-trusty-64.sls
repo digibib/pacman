@@ -10,7 +10,7 @@ vagrant-ubuntu-trusty-64:
         netmask: "255.255.255.0"
         iface: eth1
       wlan:
-        dns: "10.0.2.15"
+        dns: "10.172.2.1"
         gateway: "10.0.2.15"
         iface: eth0
   clients:
