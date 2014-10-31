@@ -18,11 +18,10 @@ klientserver-digibib:
       params: "snd-hda-intel.enable=0 --"
     mycelclients:
       -
-        ip: "192.168.0.101"
-        mac: "08:00:27:96:5e:8c"
-        name: vagrantbox
-    searchclients:
-      -
         ip: "192.168.0.102"
         mac: "00:01:2e:40:7a:14"
         name: digibibtest
+      -
+        ip: "192.168.0.101"
+        mac: "08:00:27:96:5e:8c"
+        name: vagrantbox
