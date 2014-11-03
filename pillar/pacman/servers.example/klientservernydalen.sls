@@ -15,7 +15,7 @@ klientservernydalen:
         iface: eth0
   clients:
     boot:
-      params: "snd-hda-intel.enable=0 --"
+      params: " --"
     mycelclients:
       -
         ip: "192.168.0.101"
