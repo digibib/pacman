@@ -16,7 +16,13 @@ tftpd-hpa:
 # make sure dirs exist
 mkdirs:
   cmd.run:
-  - name: mkdir -p "/tftpboot/boot/{newimages/{mycelimage,searchstation},mounts/{mycelimage,searchstation}}"
+    - name: |
+        mkdir -p /tftpboot/boot/newimages
+        mkdir -p /tftpboot/boot/newimages/mycelimage
+        mkdir -p /tftpboot/boot/newimages/searchstation
+        mkdir -p /tftpboot/boot/mounts
+        mkdir -p /tftpboot/boot/mounts/mycelimage
+        mkdir -p /tftpboot/boot/mounts/searchstation
 
 /tftpboot:
   file.recurse:
