@@ -15,6 +15,7 @@ include:
   - pacman.servers.klientserverlamb
   - pacman.servers.klientservermajor
   - pacman.servers.klientservernord
+  - pacman.servers.klientservernydalen
   - pacman.servers.klientserveroppsal
   - pacman.servers.klientserverroa
   - pacman.servers.klientserverroms
