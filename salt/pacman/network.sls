@@ -2,6 +2,8 @@
 # NETWORK INTERFACES
 ##########
 
+{% from 'pacman/common.sls' import id with context %}
+
 /etc/network/interfaces:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/network-interfaces
