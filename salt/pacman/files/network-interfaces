@@ -2,7 +2,6 @@ auto lo
 iface lo inet loopback
 
 # wlan
-# {{ wlan_iface }}
 auto {{ wlan_iface }}
 iface {{ wlan_iface }} inet dhcp
 
@@ -10,8 +9,8 @@ iface {{ wlan_iface }} inet dhcp
 auto {{ lan_iface }}
 iface {{ lan_iface }} inet static
     #pre-up iptables-restore < /etc/iptables.up.rules
-    address 192.168.0.1
-    netmask 255.255.255.0
-    dns-nameservers 192.168.0.1
+    address {{ lan_gateway }}
+    netmask {{ lan_netmask }}
+    dns-nameservers {{ lan_gateway }}
     dns-search deichman.local
     dns-domain deichman.local
