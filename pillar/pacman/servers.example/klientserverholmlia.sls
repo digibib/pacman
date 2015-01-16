@@ -18,34 +18,34 @@ klientserverholmlia:
       params: "snd-hda-intel.enable=0 --"
     mycelclients:
       -
-        ip: "192.168.0.106"
-        mac: "00:01:2e:3a:e5:07"
-        name: holmliaklient6
-      -
-        ip: "192.168.0.107"
-        mac: "00:01:2e:3a:e3:f9"
-        name: holmliaklient7
-      -
         ip: "192.168.0.101"
-        mac: "00:11:85:f1:bb:19"
+        mac: "c0:3f:d5:68:ed:82"
         name: holmliaklient1
       -
         ip: "192.168.0.102"
-        mac: "00:12:79:ae:b5:87"
+        mac: "c0:3f:d5:69:a6:64"
         name: holmliaklient2
       -
         ip: "192.168.0.103"
-        mac: "00:12:79:ae:bc:d2"
+        mac: "c0:3f:d5:69:12:37"
         name: holmliaklient3
       -
         ip: "192.168.0.104"
-        mac: "20:cf:30:9b:d1:18"
+        mac: "c0:3f:d5:69:20:6d"
         name: holmliaklient4
       -
         ip: "192.168.0.105"
-        mac: "20:cf:30:9b:d1:4e"
+        mac: "c0:3f:d5:69:c1:b9"
         name: holmliaklient5
       -
+        ip: "192.168.0.106"
+        mac: "c0:3f:d5:68:ee:17"
+        name: holmliaklient6
+      -
+        ip: "192.168.0.107"
+        mac: "c0:3f:d5:68:ed:fa"
+        name: holmliaklient7
+      -
         ip: "192.168.0.108"
-        mac: "00:01:2e:3a:e4:62"
+        mac: "c0:3f:d5:69:13:02"
         name: holmliaklient8
