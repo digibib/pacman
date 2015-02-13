@@ -31,7 +31,7 @@ klientservertorshov:
         name: torshovklient3
       -
         ip: "192.168.0.104"
-        mac: "00:01:2e:3a:fe:cd"
+        mac: "00:01:2e:40:7a:14"
         name: torshovklient4
       -
         ip: "192.168.0.105"
