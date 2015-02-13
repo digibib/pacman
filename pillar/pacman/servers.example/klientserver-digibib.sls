@@ -25,3 +25,7 @@ klientserver-digibib:
         ip: "192.168.0.101"
         mac: "08:00:27:96:5e:8c"
         name: vagrantbox
+      -
+        ip: "192.168.0.103"
+        mac: "00:01:2e:3a:fe:cd"
+        name: zotacdvitestboks
