@@ -15,7 +15,7 @@ klientserverboler:
         iface: eth0
   clients:
     boot:
-      params: "--"
+      params: "nomodeset --"
     mycelclients:
       -
         ip: "192.168.0.101"

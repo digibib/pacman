@@ -8,4 +8,4 @@ F2 f2.txt
 
 LABEL searchstation
 KERNEL /boot/mounts/searchstation/casper/vmlinuz
-APPEND initrd=/boot/mounts/searchstation/casper/initrd.gz boot=casper netboot=nfs nfsroot={{ gateway }}:/tftpboot/boot/mounts/searchstation splash quiet noacpi pci=noacpi acpi=force nomodeset {{ boot_params }}
+APPEND initrd=/boot/mounts/searchstation/casper/initrd.gz boot=casper netboot=nfs nfsroot={{ gateway }}:/tftpboot/boot/mounts/searchstation splash quiet noacpi pci=noacpi acpi=force {{ boot_params }}

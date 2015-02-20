@@ -15,7 +15,7 @@ default:
         iface: eth0
   clients:
     boot:
-      params: "snd-hda-intel.enable=0 --"
+      params: "nomodeset --"
     mycelclients:
       -
         name: examplebox1
