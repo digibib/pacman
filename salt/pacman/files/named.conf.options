@@ -22,7 +22,8 @@ options {
 
   # recursion range you allow
   #allow-recursion { localhost; 192.168.0.0/24; };
-  dnssec-validation auto;
+  dnssec-enable no;
+  #dnssec-validation auto;
   auth-nxdomain no; # conform to RFC1035
 
   # change if not use IPV6
