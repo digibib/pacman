@@ -15,7 +15,7 @@ klientserverbjorn:
         iface: eth1
   clients:
     boot:
-      params: "nomodeset snd-hda-intel.enable=0 --"
+      params: "--"
     mycelclients:
       -
         ip: "192.168.0.101"
