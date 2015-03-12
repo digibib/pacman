@@ -77,7 +77,4 @@ klientservermajor:
         ip: "192.168.0.115"
         mac: "00:01:2e:bc:57:6f"
         name: majklient15
-      -
-        ip: "192.168.0.120"
-        mac: "d4:85:64:1a:5d:89"
-        name: majpubskriver
+
