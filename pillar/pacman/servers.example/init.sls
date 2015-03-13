@@ -18,6 +18,7 @@ include:
   - pacman.servers.klientservernydalen
   - pacman.servers.klientserveroppsal
   - pacman.servers.klientserverroa
+  - pacman.servers.klientserverrommen
   - pacman.servers.klientserverroms
   - pacman.servers.klientserverstovner
   - pacman.servers.klientservertorshov
