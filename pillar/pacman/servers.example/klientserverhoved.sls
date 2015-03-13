@@ -79,7 +79,7 @@ klientserverhoved:
         name: hovedklient7
       -
         ip: "192.168.200.108"
-        mac: "00:01:2e:bc:c8:9c"
+        mac: "00:01:2e:3a:e5:07"
         name: hovedklient8
       -
         ip: "192.168.200.109"
