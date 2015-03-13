@@ -2,10 +2,15 @@
 all: reload provision
 
 # halt + up is like a reload - except it should also work if there is no machine yet
-reload: halt up_all
+reload: halt_all up_all
 
-halt:
-	vagrant halt
+halt_client:
+	vagrant halt client
+
+halt_server:
+	vagrant halt server
+
+halt_all: halt_client halt_server
 
 up_all: up_server up_client
 
