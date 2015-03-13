@@ -15,7 +15,7 @@ klientserverholmlia:
         iface: eth1
   clients:
     boot:
-      params: " --"
+      params: "--"
     mycelclients:
       -
         ip: "192.168.0.101"

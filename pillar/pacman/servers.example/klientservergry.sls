@@ -15,7 +15,7 @@ klientservergry:
         iface: eth0
   clients:
     boot:
-      params: "nomodeset snd-hda-intel.id=SB,HDMI snd-hda-intel.index=0,1 --"
+      params: "--"
     mycelclients:
       -
         ip: "192.168.0.101"

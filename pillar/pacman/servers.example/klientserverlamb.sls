@@ -15,7 +15,7 @@ klientserverlamb:
         iface: eth0
   clients:
     boot:
-      params: "nomodeset --"
+      params: "--"
     mycelclients:
       -
         ip: "192.168.0.20"
