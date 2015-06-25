@@ -19,18 +19,18 @@ klientserverboler:
     mycelclients:
       -
         ip: "192.168.0.101"
-        mac: "20:cf:30:8b:5d:65"
+        mac: "b8:ae:ed:70:3b:45"
         name: bolerklient1
       -
         ip: "192.168.0.102"
-        mac: "48:5b:39:d2:b0:e8"
+        mac: "b8:ae:ed:70:84:0f"
         name: bolerklient2
       -
         ip: "192.168.0.103"
-        mac: "48:5b:39:d2:b0:e2"
+        mac: "b8:ae:ed:70:37:25"
         name: bolerklient3
       -
         ip: "192.168.0.104"
-        mac: "48:5b:39:d2:b0:e3"
+        mac: "b8:ae:ed:70:46:72"
         name: bolerklient4
 
