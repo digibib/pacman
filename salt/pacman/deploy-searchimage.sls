@@ -17,4 +17,4 @@ remount:
   cmd.run:
     - name: /usr/local/bin/clientserver.sh restart
     - watch:
-      - file: mycelimage
+      - file: searchimage
