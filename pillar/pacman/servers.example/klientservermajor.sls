@@ -52,11 +52,19 @@ klientservermajor:
       -
         ip: "192.168.0.109"
         mac: "00:01:2e:bc:58:0f"
-        name: majklient9
+        name: majklient9      -
+      -  
+        ip: "192.168.0.110"
+        mac: "00:01:2e:bc:62:80"
+        name: majklient10
       -
         ip: "192.168.0.111"
         mac: "00:01:2e:bc:57:c9"
         name: majklient11
+      -
+        ip: "192.168.0.112"
+        mac: "00:01:2e:bc:62:49"
+        name: majklient12
       -
         ip: "192.168.0.114"
         mac: "00:01:2e:bc:62:2f"
@@ -66,14 +74,6 @@ klientservermajor:
         mac: "00:01:2e:bc:57:6f"
         name: majklient15
     searchclients:
-      -
-        ip: "192.168.0.110"
-        mac: "00:01:2e:bc:62:80"
-        name: majklient10
-      -
-        ip: "192.168.0.112"
-        mac: "00:01:2e:bc:62:49"
-        name: majklient12
       -
         ip: "192.168.0.113"
         mac: "00:01:2e:bc:62:96"
