@@ -52,8 +52,8 @@ klientservermajor:
       -
         ip: "192.168.0.109"
         mac: "00:01:2e:bc:58:0f"
-        name: majklient9      -
-      -  
+        name: majklient9
+      -
         ip: "192.168.0.110"
         mac: "00:01:2e:bc:62:80"
         name: majklient10
