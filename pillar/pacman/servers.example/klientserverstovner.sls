@@ -45,3 +45,15 @@ klientserverstovner:
         ip: "192.168.0.107"
         mac: "00:01:2e:40:97:34"
         name: stovnerklient7
+      -
+        ip: "192.168.0.108"
+        mac: "00:01:2e:3a:e4:e4"
+        name: nordklient2
+      -
+        ip: "192.168.0.109"
+        mac: "00:01:2e:3a:e5:4d"
+        name: nordklient3
+      -
+        ip: "192.168.0.110"
+        mac: "00:01:2e:3a:e4:ce"
+        name: nordklient4

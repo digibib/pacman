@@ -22,18 +22,6 @@ klientservernord:
         mac: "00:01:2e:3a:e5:17"
         name: nordklient1
       -
-        ip: "192.168.0.102"
-        mac: "00:01:2e:3a:e4:e4"
-        name: nordklient2
-      -
-        ip: "192.168.0.103"
-        mac: "00:01:2e:3a:e5:4d"
-        name: nordklient3
-      -
-        ip: "192.168.0.104"
-        mac: "00:01:2e:3a:e4:ce"
-        name: nordklient4
-      -
         ip: "192.168.0.105"
         mac: "00:01:2e:3a:e3:fe"
         name: nordklient5
