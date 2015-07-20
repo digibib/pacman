@@ -11,7 +11,7 @@ klientservertorshov:
         iface: eth1
       wlan:
         dns: "10.172.2.1"
-        gateway: "10.172.12.100"
+        gateway: "10.172.12.74"
         iface: eth0
   clients:
     boot:
