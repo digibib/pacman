@@ -1,4 +1,4 @@
-klientserver-digibib:
+klientserver-digibib.deich.folkebibl.no:
   server:
     network:
       lan:
