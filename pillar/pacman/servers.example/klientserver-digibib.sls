@@ -11,7 +11,7 @@ klientserver-digibib.deich.folkebibl.no:
         iface: eth1
       wlan:
         dns: "10.172.2.1"
-        gateway: "10.172.3.124"
+        gateway: "10.172.3.163"
         iface: eth0
   clients:
     boot:
