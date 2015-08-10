@@ -8,7 +8,7 @@ iptables:
 
 /etc/sysctl.conf:
   file.uncomment:
-    - regex: net\.ipv4\.ip_forward=1
+    - regex: ^net.ipv4.ip_forward=1
 
 /etc/iptables.up.rules:
   file.managed:
