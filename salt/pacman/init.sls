@@ -16,7 +16,6 @@ installpkgs:
       - openssh-server
       - salt-master
       - apparmor
-      - pavucontrol
     - skip_verify: True
 
 # Boot defaults
