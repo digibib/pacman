@@ -25,3 +25,19 @@ klientserverbjorn:
         ip: "192.168.0.102"
         mac: "00:01:2e:3a:ff:04"
         name: bjornklient2
+      -
+        ip: "192.168.0.103"
+        mac: "b8:ae:ed:76:8e:e9"
+        name: bjornklient3
+      -
+        ip: "192.168.0.104"
+        mac: "b8:ae:ed:76:8b:1e"
+        name: bjornklient4
+      -
+        ip: "192.168.0.105"
+        mac: "b8:ae:ed:76:8c:4d"
+        name: bjornklient5
+      -
+        ip: "192.168.0.106"
+        mac: "b8:ae:ed:76:8b:81"
+        name: bjornklient6
