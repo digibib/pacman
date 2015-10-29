@@ -73,6 +73,18 @@ klientservermajor:
         ip: "192.168.0.115"
         mac: "00:01:2e:bc:57:6f"
         name: majklient15
+      -
+        ip: "192.168.0.116"
+        mac: "b8:ae:ed:76:8a:f7"
+        name: majklient16
+      -
+        ip: "192.168.0.117"
+        mac: "b8:ae:ed:76:4e:71"
+        name: majklient17
+      -
+        ip: "192.168.0.118"
+        mac: "b8:ae:ed:76:8c:a5"
+        name: majklient18  
     searchclients:
       -
         ip: "192.168.0.113"
