@@ -128,7 +128,7 @@ klientserverhoved:
         name: hovedsok2
       -
         ip: "192.168.200.117"
-        mac: "00:12:79:a1:a7:37"
+        mac: "48:5b:39:d2:b0:e3"
         name: hovedsok3
       -
         ip: "192.168.200.118"
