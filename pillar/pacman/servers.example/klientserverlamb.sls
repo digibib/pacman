@@ -35,31 +35,23 @@ klientserverlamb:
         name: lambklient11
       -
         ip: "192.168.0.10"
-        mac: "20:cf:30:9b:d1:84"
+        mac: "b8:ae:ed:76:ec:28"
         name: lambklient1
       -
-        ip: "192.168.0.24"
-        mac: "20:cf:30:9b:d1:89"
-        name: lambklient10
-      -
         ip: "192.168.0.16"
-        mac: "20:cf:30:9b:d1:59"
+        mac: "c0:3f:d5:6c:20:d1"
         name: lambklient12
       -
         ip: "192.168.0.25"
-        mac: "20:cf:30:9a:09:04"
-        name: lambklient13
+        mac: "b8:ae:ed:76:88:3b"
+        name: lambklient10
       -
         ip: "192.168.0.26"
-        mac: "20:cf:30:9b:d1:66"
-        name: lambklient14
-      -
-        ip: "192.168.0.11"
-        mac: "20:cf:30:9b:d1:7e"
+        mac: "b8:ae:ed:76:d3:d7"
         name: lambklient3
       -
         ip: "192.168.0.23"
-        mac: "20:cf:30:9b:d1:82"
+        mac: "b8:ae:ed:76:88:bf"
         name: lambklient5
       -
         ip: "192.168.0.12"
