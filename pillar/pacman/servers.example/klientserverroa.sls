@@ -37,3 +37,8 @@ klientserverroa:
         ip: "192.168.0.105"
         mac: "00:01:2e:3a:fe:fe"
         name: roaklient5
+    searchclients:
+      -
+        ip: "192.168.0.106"
+        mac: "48:5b:39:d2:b0:e2"
+        name: roaklient6
