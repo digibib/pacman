@@ -18,10 +18,6 @@ klientservernydalen:
       params: "--"
     mycelclients:
       -
-        ip: "192.168.0.101"
-        mac: "c0:3f:d5:69:e1:ed"
-        name: nydalenklient1
-      -
         ip: "192.168.0.102"
         mac: "c0:3f:d5:68:ed:b9"
         name: nydalenklient2
@@ -33,3 +29,9 @@ klientservernydalen:
         ip: "192.168.0.104"
         mac: "c0:3f:d5:69:f0:ae"
         name: nydalenklient4
+    searchclients:
+      -
+        ip: "192.168.0.101"
+        mac: "c0:3f:d5:69:e1:ed"
+        name: nydalenklient1
+
